@@ -1,70 +1,202 @@
-'use strict'
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
-{
-    const btn = document.getElementsByClassName('btn');
-    const overlay = document.getElementById('overlay');
-    const text = document.createElement('div');
-    const link = document.createElement('div')
-    const link1 = document.createElement('div');
-    const link2 = document.createElement('div');
-    const remove = document.getElementById('close');
+html {
+    height: 100%;
+}
 
+body {
+    height: 100%;
+    background-color:whitesmoke;
+    margin: 0;
+}
 
-    // observer
-    function callback(entries,obs){
-        entries.forEach(entry => {
-            if(!entry.isIntersecting){
-                return;
-            }
-            entry.target.classList.add('appear');
-            obs.unobserve(entry.target);
-        });
-    }
+header {
+    display: flex;
+    justify-content: space-between;
+}
 
-    const options = {
-        threshold : 1,
-    }
+header div{
+    margin: 20px;
+    font-size: 50px;
+    font-family: 'Caveat', cursive;
+}
 
-    const observer = new IntersectionObserver(callback,options);
-    const target = document.getElementById('animate');
+.profile {
+    width: 350px;
+    height: 350px;
+    margin: 60px;
+    object-fit: cover;
+    margin-left: 160px;
+    border-radius: 50%;
+}
 
-    observer.observe(target);
+ul {
+    display: flex;
+    height: 40px;
+}
 
-    // observer END
+.main{
+    display: flex;
+    align-items: center;
+    border-top: solid 1px dimgray;
+    padding-top: 80px;
+}
 
-    const show = ()=> {
-        overlay.classList.add("show");
-        overlay.appendChild(text);
-    };
+.sub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+}
 
+li {
+    margin-right: 40px;
+    padding: 10px;
+    list-style: none;
+    cursor: pointer;
+    border-bottom: solid 1px slategray;
+}
 
-        btn[0].addEventListener('click', ()=>{
-            show();
-            text.innerText = "-PROFILE-\nNAME : 小杉陸 \nAGE : 22　\n　　HOBBY : スポーツ観戦"
-        });
+li:hover {
+    opacity: 0.5;
+    background-color: slategray;
+}
 
-        btn[1].addEventListener('click', ()=>{
-            show();
-            text.innerText = "-SKILLS-\n・日本漢字能力検定２級\n・普通自動車免許<AT限定>"
-        });
+.myname {
+    font-weight: normal;
+    font-size: 22px;
+    width: 50%;
+    font-family: "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" ,"HiraMinProN-W3";
+}
 
-        btn[2].addEventListener('click', ()=>{
-            show();
-            text.innerText = "-CONTACT-\nMAIL : 19111027@komatsu-u.ac.jp\n"
-            overlay.appendChild(link);
-            link.classList.add("link")
-            link.appendChild(link1);
-            link.appendChild(link2);
-            link1.innerHTML = `<a href="https://www.instagram.com/ksg_v0/" target=”_blank”>
-            <img src="img/Instagram_Glyph_Gradient_RGB.png" alt="INSTA" class="insta">
-            </a>`;
-            link2.innerHTML = `<a href="https://twitter.com/ricky_0823" target=”_blank”>
-            <img src="img/2021 Twitter logo - blue.png" alt="Twitter" class="twitter">
-            </a>`;
-        });
+.mytext {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: lighter;
+    font-size: 16px;
+    border: double 2px dimgray;
+    width: 70%;
+    height: 40%;
+    padding: 30px;
+    line-height: 25px;
+    font-family: "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro";
+}
 
-        remove.addEventListener('click', ()=>{
-            overlay.classList.remove("show");
-            link.remove();
-        }) 
+.keizoku {
+    text-decoration: none;
+}
+
+.keizoku:link, .keizoku:visited, .keizoku:hover, .keizoku:active {
+    color: black;
+  }
+
+.ichiro {
+    text-align: right;
+    padding-right: 40px;
+}
+
+.main2 {
+    font-weight: normal;
+    margin-top: 200px;
+    margin-bottom: 270px;
+    font-size: 50px;
+    text-align: center;
+    margin-left: 20px;
+    font-family: "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" ,"HiraMinProN-W3";
+    text-shadow: 6px 8px 20px slategray;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 50px;
+    background-color: dimgray;
+}
+
+.co{
+    padding-top: 2px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: lighter;
+    color: snow;
+    font-family: "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" ,"HiraMinProN-W3";
+}
+
+.ccc {
+    padding-top: 2px;
+    padding-right: 5px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: lighter;
+    color: snow;
+    font-family: "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" ,"HiraMinProN-W3";
+}
+
+/* javaScript */
+
+#overlay {
+    position: fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    background: rgba(255,255,255,0.95);
+    text-align: center;
+    padding-top: 150px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s;
+    font-family: "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" ,"HiraMinProN-W3";
+    font-size: 50px;
+    color: lightslategray;
+}
+
+#overlay.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#close {
+    position: absolute;
+    top:50px;
+    right:48%;
+    cursor: pointer;
+    font-size: 38px;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+
+}
+
+.insta {
+    padding-top: 30px;
+    margin-left: 325px;
+    width: 15%;
+    text-decoration: none;
+}
+
+.twitter {
+    padding-top: 43px;
+    margin-right: 300px;
+    width: 15%;
+    text-decoration: none;
+}
+
+/* animation */
+#animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 4.0s, transform 4.0s;
+}
+
+#animate.appear{
+    opacity: 1;
+    transform: none;
 }
