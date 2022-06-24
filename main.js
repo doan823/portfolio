@@ -11,12 +11,14 @@
 
 
     // observer
+    
     function callback(entries,obs){
         entries.forEach(entry => {
             if(!entry.isIntersecting){
                 return;
             }
             entry.target.classList.add('appear');
+            entry.target.classList.add('focus-in-expand');
             obs.unobserve(entry.target);
         });
     }
@@ -56,10 +58,10 @@
             link.appendChild(link1);
             link.appendChild(link2);
             link1.innerHTML = `<a href="https://www.instagram.com/ksg_v0/" target=”_blank”>
-            <img src="Instagram_Glyph_Gradient_RGB.png" alt="INSTA" class="insta">
+            <img src="img/Instagram_Glyph_Gradient_RGB.png" alt="INSTA" class="insta">
             </a>`;
             link2.innerHTML = `<a href="https://twitter.com/ricky_0823" target=”_blank”>
-            <img src="2021 Twitter logo - blue.png" alt="Twitter" class="twitter">
+            <img src="img/2021 Twitter logo - blue.png" alt="Twitter" class="twitter">
             </a>`;
         });
 
