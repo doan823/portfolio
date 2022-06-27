@@ -99,7 +99,7 @@ li:hover {
 }
 
 .keizoku:link, .keizoku:visited, .keizoku:hover, .keizoku:active {
-    color: black;
+    color: #333;
   }
 
 .main2 {
