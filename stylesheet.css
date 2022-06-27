@@ -204,11 +204,12 @@ footer {
 
 #animate.appear{
     opacity: 1;
+    pointer-events: all;
 }
 
 .focus-in-expand {
-	-webkit-animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	-webkit-animation: focus-in-expand 1.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: focus-in-expand 1.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 /* ----------------------------------------------
